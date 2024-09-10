@@ -1,0 +1,43 @@
+class Stack:
+    def __init__(self, size=10):
+        self._stack = []
+        self._size = size
+
+    def is_empty(self):
+        return len(self._size) <= 0
+    
+    def push(self, data):
+        if len(self._stack) >= self._size:
+            self._resize()
+        self._stack.append(data)
+
+    def pop(self):
+        if len(self._stack) <= 0:
+            raise Exception('Stack underflow')
+        else:
+            return self._stack.pop()
+        
+    def peek(self):
+        if len(self._stack) <= 0:
+            raise Exception('Stack underflow')
+        else:
+            return self._stack[-1]
+    
+    def length(self):
+        return len(self._size)
+    
+    def _resize(self):
+        new_stack = [*self._stack]
+        self._size = 2 * self._size
+        self._stack = new_stack
+
+
+stack = Stack(2)
+stack.push(5)
+stack.push(4)
+stack.push(3)
+stack.push(9)
+
+print(stack.peek())
+print(stack.pop())
+print(stack.peek())
